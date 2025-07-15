@@ -1,0 +1,25 @@
+<odoo>
+  <template id="chat_popup_button" inherit_id="website.layout">
+    <xpath expr="//body" position="inside">
+      <t t-if="request.env['ir.config_parameter'].sudo().get_param('chat_webhook.enabled') == 'True'">
+        <div id="chat-toggle-button">
+          <img src="/chat_webhook/static/description/icon.png" alt="Chat"/>
+        </div>
+        <div id="chat-popup" class="hidden">
+          <div class="chat-header">
+            <span>Habla con nosotros</span>
+            <small>¿Cómo podemos ayudarte hoy?</small>
+            <span class="chat-time" t-att-text="new Date().toLocaleTimeString()"/>
+            <button id="chat-close">×</button>
+          </div>
+          <div id="chat-messages"></div>
+          <div class="chat-input">
+            <input type="text" id="chat-input-field" placeholder="Escriba un mensaje"/>
+            <button id="chat-send">Enviar</button>
+            <i class="fa fa-paperclip"></i>
+          </div>
+        </div>
+      </t>
+    </xpath>
+  </template>
+</odoo>

@@ -1,0 +1,14 @@
+<odoo>
+  <record id="chat_webhook_res_config_settings_view" model="ir.ui.view">
+    <field name="name">chat.webhook.res.config.settings</field>
+    <field name="model">res.config.settings</field>
+    <field name="arch" type="xml">
+      <form string="Chat Webhook Settings">
+        <group>
+          <field name="chat_webhook_url"/>
+          <field name="chat_enabled"/>
+        </group>
+      </form>
+    </field>
+  </record>
+</odoo>
