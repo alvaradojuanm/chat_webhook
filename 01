@@ -1,31 +1,3 @@
-livechat_webhook_integration/models/res_config_settings.py
-
-
-
-# -*- coding: utf-8 -*-
-from odoo import fields, models
-
-class ResConfigSettings(models.TransientModel):
-    _inherit = 'res.config.settings'
-
-    is_livechat_webhook_active = fields.Boolean(
-        string="Activar Webhook para Live Chat",
-        config_parameter='livechat_webhook_integration.is_active'
-    )
-    livechat_webhook_url = fields.Char(
-        string="URL del Webhook",
-        config_parameter='livechat_webhook_integration.webhook_url'
-    )
-
-
-//////////////////////////////
-
-livechat_webhook_integration/views/res_config_settings_views.xml
-
-
-
-
-
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="view_livechat_webhook_config_settings" model="ir.ui.view">
@@ -56,7 +28,7 @@ livechat_webhook_integration/views/res_config_settings_views.xml
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
-        <field name="target">inline</field>
+        <field name="target">new</field>
         <field name="view_id" ref="view_livechat_webhook_config_settings"/>
     </record>
 
