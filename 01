@@ -23,7 +23,7 @@
         </field>
     </record>
 
-    <record id="action_livechat_webhook_config" model="ir.actions.act_window">
+    <record id="action_livechat_webhook_config_custom" model="ir.actions.act_window">
         <field name="name">Configuración de Webhook para Live Chat</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.config.settings</field>
@@ -41,6 +41,6 @@
         id="menu_livechat_webhook_config"
         name="Ajustes de Webhook"
         parent="menu_livechat_webhook_root"
-        action="action_livechat_webhook_config"
+        action="action_livechat_webhook_config_custom"
         sequence="1"/>
 </odoo>
