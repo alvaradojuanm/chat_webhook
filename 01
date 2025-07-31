@@ -26,10 +26,10 @@
     <record id="action_livechat_webhook_config" model="ir.actions.act_window">
         <field name="name">Configuración de Webhook para Live Chat</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">res.config.settings</field>
+        <field name="res_model">ir.module.module</field>
         <field name="view_mode">form</field>
-        <field name="target">new</field>
-        <field name="view_id" ref="view_livechat_webhook_config_settings"/>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'website'}</field>
     </record>
 
     <menuitem
