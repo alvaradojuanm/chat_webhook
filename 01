@@ -24,23 +24,20 @@
     </record>
 
     <record id="action_livechat_webhook_config" model="ir.actions.act_window">
-        <field name="name">Configuración de Webhook para Live Chat</field>
+        <field name="name">Ajustes</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="website.res_config_settings_view_form"/>
         <field name="view_mode">form</field>
-        <field name="target">new</field>
-        <field name="view_id" ref="view_livechat_webhook_config_settings"/>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'website'}</field>
     </record>
 
     <menuitem
-        id="menu_livechat_webhook_root"
-        name="Webhook Config"
-        sequence="98"/>
-        
-    <menuitem
         id="menu_livechat_webhook_config"
-        name="Ajustes de Webhook"
-        parent="menu_livechat_webhook_root"
+        name="Webhook Live Chat"
+        parent="website.menu_website_configuration"
         action="action_livechat_webhook_config"
-        sequence="1"/>
+        sequence="99"/>
+
 </odoo>
