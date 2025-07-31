@@ -1,0 +1,21 @@
+livechat_webhook_integration/models/   res_config_settings.py
+
+
+# -*- coding: utf-8 -*-
+from odoo import fields, models
+
+class ResConfigSettings(models.TransientModel):
+    _inherit = 'res.config.settings'
+
+    # CORRECCIÓN: Usamos 'related' para que los campos se integren correctamente
+    # con la configuración del módulo 'website' y no creen una acción separada.
+    is_livechat_webhook_active = fields.Boolean(
+        string="Activar Webhook para Live Chat",
+        related='website_id.is_livechat_webhook_active',
+        readonly=False
+    )
+    livechat_webhook_url = fields.Char(
+        string="URL del Webhook",
+        related='website_id.livechat_webhook_url',
+        readonly=False
+    )
