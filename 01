@@ -19,3 +19,75 @@ class ResConfigSettings(models.TransientModel):
         related='website_id.livechat_webhook_url',
         readonly=False
     )
+
+
+////////////////////////////////////////
+
+livechat_webhook_integration/models/   __init__.py
+
+# -*- coding: utf-8 -*-
+from . import res_config_settings
+from . import website # <-- AÑADE ESTA LÍNEA
+
+/////////////////////////////////////////////////
+
+livechat_webhook_integration/models/website.py
+
+
+# -*- coding: utf-8 -*-
+from odoo import fields, models
+
+class Website(models.Model):
+    _inherit = 'website'
+
+    is_livechat_webhook_active = fields.Boolean(string="Activar Webhook para Live Chat")
+    livechat_webhook_url = fields.Char(string="URL del Webhook")
+
+
+
+
+////////////////////////////////////
+
+
+livechat_webhook_integration/views/  res_config_settings_views.xml
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.livechat.webhook</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='live_chat_setting']" position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="livechat_webhook_settings">
+                    <div class="o_setting_left_pane">
+                        <field name="is_livechat_webhook_active"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="is_livechat_webhook_active"/>
+                        <div class="text-muted">
+                            Activa esta opción para enviar los mensajes a un bot externo.
+                        </div>
+                        <div class="mt16" attrs="{'invisible': [('is_livechat_webhook_active', '=', False)]}">
+                            <label for="livechat_webhook_url" class="font-weight-bold"/>
+                            <field name="livechat_webhook_url" placeholder="https://api.mibot.com/chat"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+
+
+/////////////////////////////////////////
+
+
+
+
+
+
+
+
